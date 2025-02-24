@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login - Last.fm Music App</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <!-- Sticky Navigation Bar -->
+  <div class="navbar">
+    <a href="{{ url_for('index') }}">Home</a>
+    <a href="{{ url_for('recent') }}">Recent</a>
+    <a href="{{ url_for('tracks') }}">Top Tracks</a>
+    <a href="{{ url_for('recommend') }}">Recommendations</a>
+  </div>
+  <div class="container">
+    <h1>Welcome to Music Recommender</h1>
+    <form action="/" method="post">
+      <input type="text" name="username" placeholder="Enter your Last.fm username" required>
+      <button type="submit">Login</button>
+    </form>
+  </div>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Recommendations</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</head>
+<body>
+  <!-- Sticky Navigation Bar -->
+  <div class="navbar">
+    <a href="{{ url_for('index') }}">Home</a>
+    <a href="{{ url_for('recent') }}">Recent</a>
+    <a href="{{ url_for('tracks') }}">Top Tracks</a>
+    <a href="{{ url_for('recommend') }}">Recommendations</a>
+  </div>
+  <div class="container">
+    {% for rec in recommendations %}
+      <div class="song-card">
+        <img src="{{ rec.album_art if rec.album_art is defined else url_for('static', filename='placeholder.png') }}" alt="Album Art">
+        <div>
+          <h3>{{ rec.song }}</h3>
+          <p>{{ rec.artist }}</p>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+  <div class="container">
+    <button onclick="window.location.href='/tracks'">Back to Top Tracks</button>
+    <button onclick="toggleDarkMode()">Toggle Dark Mode</button>
+  </div>
+</body>
+</html>

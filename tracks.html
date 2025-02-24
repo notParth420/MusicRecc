@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Top Tracks</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <!-- Sticky Navigation Bar -->
+  <div class="navbar">
+    <a href="{{ url_for('index') }}">Home</a>
+    <a href="{{ url_for('recent') }}">Recent</a>
+    <a href="{{ url_for('tracks') }}">Top Tracks</a>
+    <a href="{{ url_for('recommend') }}">Recommendations</a>
+  </div>
+  <div class="container">
+    {% for track in tracks %}
+      <div class="song-card">
+        <img src="{{ track.album_art if track.album_art is defined else url_for('static', filename='placeholder.png') }}" alt="Album Art">
+        <div>
+          <h3>{{ track.track_name }}</h3>
+          <p>{{ track.artist_name }}</p>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+  <div class="container">
+    <button onclick="window.location.href='/recent'">Back to Recent</button>
+    <button onclick="window.location.href='/recommend'">Go to Recommendations</button>
+  </div>
+</body>
+</html>
